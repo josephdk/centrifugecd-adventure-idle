@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adventure Idle v0.0.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> <!-- Google Font : Raleway -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- Bootstrap Gods -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/> <!-- Tachyon Gods -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"> <!-- My humble contribution -->
+
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top header">
+      <a class="navbar-brand" href="#">Adventure Idle</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Quest</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Craft</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <div class="cell_main">
+      <div class="cell f1 br3 pa3 ma2 bw2 shadow-5 tc" id="woodWorking">
+          <h3>Woodworking</h3>
+          <br><br><br>
+          <div class="bg-moon-gray br-pill h1 overflow-y-hidden">
+              <div class="progress-fill bg-blue br-pill h1 shadow-1" id="woodWorkingProgress"></div>
+          </div>
+          <p class="di" id="woodWorkingLevel">Level 1</p>
+          <p class="di">-</p>
+          <p class="di" id="woodWorkingCurrentExp">0:00</p>
+      </div>
+      <div class="cell f1 br3 pa3 ma2 bw2 shadow-5 tc" id="fishing">
+          <h3>Fishing</h3>
+          <p id="fishingLevel">Level 1</p>
+          <div class="bg-moon-gray br-pill h1 overflow-y-hidden">
+              <div class="progress-fill bg-blue br-pill h1 shadow-1" id="fishingProgress"></div>
+          </div>
+          <p id="fishingCurrentExp">(0/100)</p>
+      </div>
+    </div>
+
+    
+
+    <footer>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+</body>
+</html>
