@@ -1,60 +1,63 @@
-const skill_woodWorking = {
+const player = {
+    class: 'Peasant',
+    level: 1,
+    exp: 0
+}
+const playerClass = {
     expEarned: 20,
     expTotal: 0,
     expToNext: 100,
-    expCoefficient: 1.15,
-    level: 1,
+    expCoefficient: 1.05,
+    promotionLevel: 2
 }
 
-const skill_fishing = {
-    expEarned: 10,
+const soldierClass = {
+    expEarned: 4,
     expTotal: 0,
     expToNext: 100,
-    expCoefficient: 1.22,
-    level: 1,
+    expCoefficient: 1.25,
+    promotionLevel: 3
 }
+
+let promotionConfirmation = document.getElementById('promotionButton');
+promotionConfirmation.onclick = promotion;
+
+initialize();
 
 setInterval(function gameLoop() {
-    woodWorking();
-    fishing();
+    mainClass();
 }, 1000);
 
-function woodWorking() {
-    skill_woodWorking.expTotal = skill_woodWorking.expTotal + skill_woodWorking.expEarned;
-    if (skill_woodWorking.expTotal >= skill_woodWorking.expToNext) {
-        skill_woodWorking.level = skill_woodWorking.level + 1;
-        skill_woodWorking.expTotal = skill_woodWorking.expTotal - skill_woodWorking.expToNext;
-        skill_woodWorking.expToNext = skill_woodWorking.expToNext * skill_woodWorking.expCoefficient;
-        document.getElementById("woodWorkingLevel").innerHTML = 'Level ' + skill_woodWorking.level;
-        document.getElementById("woodWorkingProgress").style.width = skill_woodWorking.expTotal / skill_woodWorking.expToNext * 100 + '%';
-    } else {
-    document.getElementById("woodWorkingProgress").style.width = skill_woodWorking.expTotal / skill_woodWorking.expToNext * 100 + '%';
-    }
-
-    document.getElementById("woodWorkingCurrentExp").innerHTML = timeRemaining(skill_woodWorking.expToNext, skill_woodWorking.expTotal, skill_woodWorking.expEarned);
-    // console.log(skill_woodWorking);
+function initialize() {
+    document.getElementById("mainClassTitle").innerHTML = player.class;
+    document.getElementById("mainClassLevel").innerHTML = 'Level ' + player.level;
 }
 
-function fishing () {
-    if (skill_woodWorking.level < 2){
-        return;
-    }
-
-    skill_fishing.expTotal = skill_fishing.expTotal + skill_fishing.expEarned;
-    if (skill_fishing.expTotal > skill_fishing.expToNext) {
-        skill_fishing.level = skill_fishing.level + 1;
-        skill_fishing.expTotal = skill_fishing.expTotal - skill_fishing.expToNext;
-        skill_fishing.expToNext = skill_fishing.expToNext * skill_fishing.expCoefficient;
-        document.getElementById("fishingLevel").innerHTML = 'Level ' + skill_fishing.level;
-        document.getElementById("fishingProgress").style.width = skill_fishing.expTotal / skill_fishing.expToNext * 100 + '%';
+function mainClass() {
+    playerClass.expTotal = playerClass.expTotal + playerClass.expEarned;
+    if (playerClass.expTotal >= playerClass.expToNext) {
+        player.level = player.level + 1;
+        playerClass.expTotal = playerClass.expTotal - playerClass.expToNext;
+        playerClass.expToNext = playerClass.expToNext * playerClass.expCoefficient;
+        document.getElementById("mainClassLevel").innerHTML = 'Level ' + player.level;
+        document.getElementById("mainClassProgress").style.width = playerClass.expTotal / playerClass.expToNext * 100 + '%';
     } else {
-    document.getElementById("fishingProgress").style.width = skill_fishing.expTotal / skill_fishing.expToNext * 100 + '%';
+        document.getElementById("mainClassProgress").style.width = playerClass.expTotal / playerClass.expToNext * 100 + '%';
     }
 
-    document.getElementById("fishingCurrentExp").innerHTML = '(' + Math.round(skill_fishing.expTotal) + '/' + Math.round(skill_fishing.expToNext) + ')';
-    // console.log(skill_fishing);
+    if (player.level >= playerClass.promotionLevel) {
+        document.getElementById("promotionButton").disabled = false;
+    }
+
+    document.getElementById("mainClassETA").innerHTML = timeRemaining(playerClass.expToNext, playerClass.expTotal, playerClass.expEarned);
 }
 
+function promotion() {
+    console.log('yep');
+}
+
+
+// These two functions relate to the time remaining until the next level
 function timeRemaining(expToNext, expTotal, expEarned) {    
     let secondsRemaining = expToNext - expTotal;
     secondsRemaining = secondsRemaining / expEarned;
@@ -73,3 +76,4 @@ function convertSeconds(sec) {
     result += ":" + (seconds < 10 ? "0" + seconds : seconds);
     return result;
  }
+ // These two functions relate to the time remaining until the next level
