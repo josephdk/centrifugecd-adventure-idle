@@ -62,7 +62,7 @@ body {
 .cell {
     align-items: center;
     justify-items: center;
-    background: #88D9D9;
+    background: #5BBBBB;
     min-width: 6em;
 }
 
@@ -86,6 +86,15 @@ body {
 
 .tooltip-inner {
     background: var(--main-head-color);
+}
+
+.promoGridContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.promoGridA {
+    grid-row: span 2 / auto;
 }
 
 .btn {

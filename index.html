@@ -50,6 +50,15 @@
           <li class="nav-item">
             <a class="nav-link" href="#" id="craft" data-toggle="modal" data-target="#shopModal">Craft</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dev Tools</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#" id="devLevelUp">Level Up</a>
+              <a class="dropdown-item" href="#" id="devAttackUp">Attack Up</a>
+              <a class="dropdown-item" href="#" id="devDefenseUp">Defense Up</a>
+              <a class="dropdown-item" href="#" id="devDeleteSave">Delete Save</a>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
@@ -77,36 +86,32 @@
               <div class="progress-fill br-pill h1 shadow-1" id="mainClassProgress"></div>
             </div>
             <p class="">eta: <span id="mainClassETA">0:00</span> - exp <span id="current-exp">0</span> / <span id="needed-exp">0</span> needed</p>
-            <div class="dib promotions">
-              <span class="d-inline-block" data-toggle="tooltip" id="soldierTooltip"><button class="btn promotion-button" id="promoteToFirst" disabled></button></span>
-              <span class="d-inline-block" data-toggle="tooltip" id="farmerTooltip"><button class="btn promotion-button" id="promoteToSecond" disabled></button></span>
-            </div>
+        </div>
+        <div class="cell f2 br3 ma2 pa1 bw2 shadow-5 tc promoGridContainer">
+          <div class="promoGridA">
+            <button class="btn promotion-button" id="promoteToFirst" disabled></button>
+          </div>
+          <div class="f5">Description text
+          </div>
+          <div class="f5">Change in currency text
+          </div>
+        </div>
+        <div class="cell f2 br3 ma2 pa1 bw2 shadow-5 tc promoGridContainer">
+          <div class="promoGridA">
+            <button class="btn promotion-button" id="promoteToSecond" disabled></button>
+          </div>
+          <div class="f5">Description text
+          </div>
+          <div class="f5">Change in currency text
+          </div>
         </div>
       </div>
-    </div> 
+    </div>
     <!-- End Class Cards -->
 
     <script src="scripts/popper.min.js"/></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-          $("#soldierTooltip").tooltip({
-            title: "<h5>Become a soldier.</h5><p>+1 gold</p><p>+1 attack</p><p>+1 defense</p>",
-            template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
-            animation: true,
-            html: true,
-            trigger: 'hover'
-          });
-          $("#farmerTooltip").tooltip({
-            title: "<h5>Become a farmer.</h5><p>+4 gold</p><p>+1 defense</p>",
-            template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
-            animation: true,
-            html: true,
-            trigger: 'hover'
-          });  
-      });
-      </script>
   </body>
 </html>

@@ -73,15 +73,13 @@ const farmerClass = {
     defenseGained: 1
 }
 
-// Loading the game data
-
 // Core initialization
 loadGame();
 initialize();
 
 // Main game loop
 setInterval(function gameLoop() {
-    mainClass();
+    mainGameLoop();
 }, 1000);
 
 // Save game loop
@@ -108,7 +106,7 @@ function initialize() {
     document.getElementById("description2").innerHTML = playerClass.description2;
 }
 
-function mainClass() {
+function mainGameLoop() {
     // Updating currencies and experience based on selected class
     playerClass.expTotal = playerClass.expTotal + playerClass.expEarned;
     playerClass.totalGold = playerClass.totalGold + playerClass.goldGained;
@@ -126,11 +124,9 @@ function mainClass() {
         document.getElementById("mainClassProgress").style.width = playerClass.expTotal / playerClass.expToNext * 100 + '%';
     }
 
-    // Promotion to the various classes
-    if (playerClass.level >= soldierClass.promotionLevel) {
+    // Enabling promotion classes if requirements are met
+    if (playerClass.level >= playerClass.promotionLevel) {
         document.getElementById("promoteToFirst").disabled = false;
-    }
-    if (playerClass.level >= farmerClass.promotionLevel) {
         document.getElementById("promoteToSecond").disabled = false;
     }
 
@@ -175,15 +171,30 @@ function promotion(promotionClass) {
     document.getElementById("classPicture").src = promotionObj.img;
     document.getElementById("description1").innerHTML = promotionObj.description1;
     document.getElementById("description2").innerHTML = promotionObj.description2;
-    document.getElementById("promoteToFirst").innerHTML = 'Become a ' + promotionObj.firstPromotion;
-    document.getElementById("promoteToSecond").innerHTML = 'Become a ' + promotionObj.secondPromotion;
+    document.getElementById("promoteToFirst").innerHTML = promotionObj.firstPromotion;
+    document.getElementById("promoteToSecond").innerHTML = promotionObj.secondPromotion;
     document.getElementById("promoteToFirst").disabled = true;
     document.getElementById("promoteToSecond").disabled = true;
     initialize();
 }
 
-// 
+// Dev Tools
+document.getElementById('devLevelUp').onclick = function() { devTools('levelUp'); }
+document.getElementById('devAttackUp').onclick = function() { devTools('attackUp'); }
+document.getElementById('devDefenseUp').onclick = function() { devTools('defenseUp'); }
+document.getElementById('devDeleteSave').onclick = function() { devTools('deleteSave'); }
 
+function devTools (command) {
+    if (command === 'levelUp') {
+        playerClass.level = 100;
+    } else if (command === 'attackUp') {
+        playerClass.totalAttack = 100000;
+    } else if (command === 'defenseUp') {
+        playerClass.totalDefense = 100000;
+    } else if (command === 'deleteSave') {
+        localStorage.removeItem('idleAdventureSave');
+    }
+}
 
 // These two functions relate to the time remaining until the next level
 function timeRemaining(expToNext, expTotal, expEarned) {    
