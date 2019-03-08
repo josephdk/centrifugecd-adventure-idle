@@ -6,11 +6,10 @@
     <title>Adventure Idle v0.0.1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> <!-- Google Font : Raleway -->
-    <link rel="script" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- Bootstrap Gods -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/> <!-- Tachyon Gods -->
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css"> <!-- My humble contribution -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
 
     
 </head>
@@ -66,42 +65,42 @@
 
     <!-- Begin Class Cards -->
     <div id="class-wrapper">
-    <div class="cell_main">
-      <div class="cell f1 br3 pa3 ma2 bw2 shadow-5 tc" id="main_job">
-          <h3 id="mainClassTitle"></h3>
-          <p class="" id="mainClassLevel"></p>
-          <img id="classPicture" src="images/peasant.png" />
-          <p id="description1">You're a worthless peasant.</p>
-          <p id="description2">It's not much of a life, but it's a life.</p>
-          <div class="bg-moon-gray br-pill h1 overflow-y-hidden">
-            <div class="progress-fill br-pill h1 shadow-1" id="mainClassProgress"></div>
-          </div>
-          <p class="">eta: <span id="mainClassETA">0:00</span> - exp <span id="current-exp">0</span> / <span id="needed-exp">0</span> needed</p>
-          <div class="dib promotions">
-            <span class="d-inline-block" data-toggle="tooltip" id="soldierTooltip"><button class="btn promotion-button" id="promoteToFirst" disabled>Become a Soldier</button></span>
-            <span class="d-inline-block" data-toggle="tooltip" id="farmerTooltip"><button class="btn promotion-button" id="promoteToSecond" disabled>Become a Farmer</button></span>
-          </div>
+      <div class="cell_main">
+        <div class="cell f1 br3 pa3 ma2 bw2 shadow-5 tc" id="main_job">
+            <h3 id="mainClassTitle"></h3>
+            <p class="" id="mainClassLevel"></p>
+            <img id="classPicture" src="" />
+            <p id="description1"></p>
+            <p id="description2"></p>
+            <br />
+            <div class="bg-moon-gray br-pill h1 overflow-y-hidden">
+              <div class="progress-fill br-pill h1 shadow-1" id="mainClassProgress"></div>
+            </div>
+            <p class="">eta: <span id="mainClassETA">0:00</span> - exp <span id="current-exp">0</span> / <span id="needed-exp">0</span> needed</p>
+            <div class="dib promotions">
+              <span class="d-inline-block" data-toggle="tooltip" id="soldierTooltip"><button class="btn promotion-button" id="promoteToFirst" disabled></button></span>
+              <span class="d-inline-block" data-toggle="tooltip" id="farmerTooltip"><button class="btn promotion-button" id="promoteToSecond" disabled></button></span>
+            </div>
+        </div>
       </div>
-    </div>
     </div> 
     <!-- End Class Cards -->
 
-    
+    <script src="scripts/popper.min.js"/></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/jquery-3.3.1.min.js"></script>
-    <!-- <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
-    <script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="scripts/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
           $("#soldierTooltip").tooltip({
-            title: "<h3>Become a soldier.</h3><p>+1 gold</p><p>+1 attack</p><p>+1 defense</p>",
+            title: "<h5>Become a soldier.</h5><p>+1 gold</p><p>+1 attack</p><p>+1 defense</p>",
             template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
             animation: true,
             html: true,
             trigger: 'hover'
           });
           $("#farmerTooltip").tooltip({
-            title: "<h3>Become a farmer.</h3><p>+4 gold</p><p>+1 defense</p>",
+            title: "<h5>Become a farmer.</h5><p>+4 gold</p><p>+1 defense</p>",
             template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
             animation: true,
             html: true,

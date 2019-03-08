@@ -1,7 +1,10 @@
-const playerClass = {
+let playerClass = {
     class: 'Peasant',
     firstPromotion: 'Soldier',
     secondPromotion: 'Farmer',
+    description1: "You are a worthless peasant.",
+    description2: "It's not much of a life, but it's a life.",
+    img: 'images/peasant.png',
     level: 1,
     expEarned: 50,
     expTotal: 0,
@@ -36,8 +39,8 @@ const soldierClass = {
 
 const knightClass = {
     class: 'Knight',
-    firstPromotion: 'Paladin',
-    secondPromotion: 'Barbarian',
+    firstPromotion: 'Max',
+    secondPromotion: 'Max',
     description1: "You've been knighted.",
     description2: "The king trusts you, which is pretty good.",
     img: 'images/knight.png',
@@ -46,7 +49,7 @@ const knightClass = {
     expTotal: 0,
     expToNext: 100,
     expCoefficient: 1.25,
-    promotionLevel: 2,
+    promotionLevel: 99,
     goldGained: 2,
     attackGained: 1,
     defenseGained: 1
@@ -57,7 +60,7 @@ const farmerClass = {
     firstPromotion: 'Mage',
     secondPromotion: 'Drifter',
     description1: "You've become a farmer.",
-    description2: "It's hard work, but at least it pays well.",
+    description2: "It's hard work but at least it pays well.",
     img: 'images/farmer.png',
     level: 1,
     expEarned: 50,
@@ -70,10 +73,10 @@ const farmerClass = {
     defenseGained: 1
 }
 
-document.getElementById('promoteToFirst').onclick = function() { promotion(playerClass.firstPromotion); }
-document.getElementById('promoteToSecond').onclick = function() { promotion(playerClass.secondPromotion); }
+// Loading the game data
 
 // Core initialization
+loadGame();
 initialize();
 
 // Main game loop
@@ -81,10 +84,28 @@ setInterval(function gameLoop() {
     mainClass();
 }, 1000);
 
+// Save game loop
+var saveGameLoop = window.setInterval(function() {
+    localStorage.setItem('idleAdventureSave', JSON.stringify(playerClass));
+    console.log('Game saved successfully');
+}, 15000)
 
+function loadGame() {
+    var saveGame = JSON.parse(localStorage.getItem('idleAdventureSave'))
+    if (saveGame !== null) {
+        playerClass = saveGame;
+    }
+}
+
+// Sets all dynamic screen variables to the current contents of playerClass when the game is started or updated
 function initialize() {
     document.getElementById("mainClassTitle").innerHTML = playerClass.class;
     document.getElementById("mainClassLevel").innerHTML = 'Level ' + playerClass.level;
+    document.getElementById("classPicture").src = playerClass.img;
+    document.getElementById("promoteToFirst").innerHTML = playerClass.firstPromotion;
+    document.getElementById("promoteToSecond").innerHTML = playerClass.secondPromotion;
+    document.getElementById("description1").innerHTML = playerClass.description1;
+    document.getElementById("description2").innerHTML = playerClass.description2;
 }
 
 function mainClass() {
@@ -122,6 +143,10 @@ function mainClass() {
     document.getElementById("mainClassETA").innerHTML = timeRemaining(playerClass.expToNext, playerClass.expTotal, playerClass.expEarned);
 }
 
+// Event handlers for the promotion buttons
+document.getElementById('promoteToFirst').onclick = function() { promotion(playerClass.firstPromotion); }
+document.getElementById('promoteToSecond').onclick = function() { promotion(playerClass.secondPromotion); }
+
 // Handles reassigning the players class to the selected promotion class
 function promotion(promotionClass) {
     if (promotionClass === 'Soldier') {
@@ -139,8 +164,11 @@ function promotion(promotionClass) {
     playerClass.expCoefficient = promotionObj.expCoefficient;
     playerClass.expTotal = promotionObj.expTotal;
     playerClass.promotionLevel = promotionObj.promotionLevel;
+    playerClass.img = promotionObj.img;
     playerClass.firstPromotion = promotionObj.firstPromotion;
     playerClass.secondPromotion = promotionObj.secondPromotion;
+    playerClass.description1 = promotionObj.description1;
+    playerClass.description2 = promotionObj.description2;
     playerClass.goldGained = promotionObj.goldGained;
     playerClass.attackGained = promotionObj.attackGained;
     playerClass.defenseGained = promotionObj.defenseGained;
@@ -153,6 +181,8 @@ function promotion(promotionClass) {
     document.getElementById("promoteToSecond").disabled = true;
     initialize();
 }
+
+// 
 
 
 // These two functions relate to the time remaining until the next level
