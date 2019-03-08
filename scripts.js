@@ -1,9 +1,6 @@
-const player = {
+const playerClass = {
     class: 'Peasant',
     level: 1,
-    exp: 0
-}
-const playerClass = {
     expEarned: 20,
     expTotal: 0,
     expToNext: 100,
@@ -12,6 +9,8 @@ const playerClass = {
 }
 
 const soldierClass = {
+    class: 'Soldier',
+    level: 1,
     expEarned: 4,
     expTotal: 0,
     expToNext: 100,
@@ -19,8 +18,8 @@ const soldierClass = {
     promotionLevel: 3
 }
 
-let promotionConfirmation = document.getElementById('promotionButton');
-promotionConfirmation.onclick = promotion;
+document.getElementById('promoteToSoldier').onclick = function() { promotion("Soldier"); }
+
 
 initialize();
 
@@ -29,31 +28,43 @@ setInterval(function gameLoop() {
 }, 1000);
 
 function initialize() {
-    document.getElementById("mainClassTitle").innerHTML = player.class;
-    document.getElementById("mainClassLevel").innerHTML = 'Level ' + player.level;
+    document.getElementById("mainClassTitle").innerHTML = playerClass.class;
+    document.getElementById("mainClassLevel").innerHTML = 'Level ' + playerClass.level;
 }
 
 function mainClass() {
     playerClass.expTotal = playerClass.expTotal + playerClass.expEarned;
     if (playerClass.expTotal >= playerClass.expToNext) {
-        player.level = player.level + 1;
+        playerClass.level = playerClass.level + 1;
         playerClass.expTotal = playerClass.expTotal - playerClass.expToNext;
         playerClass.expToNext = playerClass.expToNext * playerClass.expCoefficient;
-        document.getElementById("mainClassLevel").innerHTML = 'Level ' + player.level;
+        document.getElementById("mainClassLevel").innerHTML = 'Level ' + playerClass.level;
         document.getElementById("mainClassProgress").style.width = playerClass.expTotal / playerClass.expToNext * 100 + '%';
     } else {
         document.getElementById("mainClassProgress").style.width = playerClass.expTotal / playerClass.expToNext * 100 + '%';
     }
 
-    if (player.level >= playerClass.promotionLevel) {
-        document.getElementById("promotionButton").disabled = false;
+    if (playerClass.level >= playerClass.promotionLevel) {
+        document.getElementById("promoteToSoldier").disabled = false;
     }
 
     document.getElementById("mainClassETA").innerHTML = timeRemaining(playerClass.expToNext, playerClass.expTotal, playerClass.expEarned);
 }
 
-function promotion() {
-    console.log('yep');
+function promotion(promotionClass) {
+    if (promotionClass === 'Soldier') {
+        var {className, level, expEarned, expTotal, expToNext, expCoefficient, promotionLevel} = soldierClass;
+    }
+
+    playerClass.class = promotionClass;
+    playerClass.level = level;
+    playerClass.expEarned = expEarned;
+    playerClass.expToNext = expToNext;
+    playerClass.expCoefficient = expCoefficient;
+    playerClass.expTotal = expTotal;
+    playerClass.promotionLevel = promotionLevel;
+
+    initialize();
 }
 
 

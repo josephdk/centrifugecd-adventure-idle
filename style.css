@@ -20,6 +20,11 @@ body {
     color: white;
 }
 
+.cell_main img {
+    width: 150px;
+    height: 150px;
+}
+
 .cell_main > h1 {
     color: white;
 }
@@ -41,4 +46,11 @@ body {
 
 .progress-fill {
     width: 1%;
+}
+
+.arrow {
+    background: #004F4F;
+}
+.tooltip-inner {
+    background: #004F4F;
 }
