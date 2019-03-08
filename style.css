@@ -1,3 +1,7 @@
+:root {
+    --main-head-color: #004f4f;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -5,24 +9,49 @@ body {
     background: #008080;
   }
 
+.modal-header {
+    background: var(--main-head-color);
+}
+
 .header {
     border-bottom: 1px solid black;
-    background: #004F4F;
+    background: var(--main-head-color);
+}
+
+.inventory {
+    border-bottom: 1px solid black;
+    background: #055A5A;
+    color: white;
+}
+
+.inventory span {
+    font-size: 1.5em;
+    padding-right: 1em;
+    vertical-align: middle;
+}
+
+.inventory img {
+    padding: 2px;
+    padding-right: 5px;
+    vertical-align: middle;
 }
 
 
+
+.wrapper {
+    display: grid;
+}
+
 .cell_main {
-    margin-top: 75px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    padding: 1rem;
+    display: grid;
     justify-content: center;
     color: white;
 }
 
 .cell_main img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .cell_main > h1 {
@@ -31,12 +60,14 @@ body {
 
 /* All Cell Specific styles */
 .cell {
+    align-items: center;
+    justify-items: center;
     background: #88D9D9;
-    width: 300px;
-    height: 400px;
+    min-width: 6em;
 }
 
 .cell p {
+    margin: .2rem;
     font-size: 16px;
 }
 
@@ -45,12 +76,19 @@ body {
 }
 
 .progress-fill {
+    background: #008080;
     width: 1%;
 }
 
-.arrow {
-    background: #004F4F;
+.tooltip p {
+    margin: 0;
 }
+
 .tooltip-inner {
-    background: #004F4F;
+    background: var(--main-head-color);
+}
+
+.btn {
+    font-weight: bold;
+    background-color: #008080;
 }

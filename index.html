@@ -15,7 +15,26 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top header">
+  <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crafting</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="wrapper">
+    <!-- Begin Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark header">
       <a class="navbar-brand" href="#">Adventure Idle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,51 +49,64 @@
             <a class="nav-link" href="#">Quest</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Craft</a>
+            <a class="nav-link" href="#" id="craft" data-toggle="modal" data-target="#shopModal">Craft</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
         </ul>
       </div>
     </nav>
+    <!-- End Navigation -->
 
+    <!-- Begin Inventory Panel -->
+    <section class="inventory">
+        <img src="images/coin.png" /><span id="gold">0</span>
+        <img src="images/sword.png" /><span id="attack">0</span>
+        <img src="images/shield.png" /><span id="defense">0</span>
+    </section>
+    <!-- End Inventory Panel -->
+
+    <!-- Begin Class Cards -->
+    <div id="class-wrapper">
     <div class="cell_main">
       <div class="cell f1 br3 pa3 ma2 bw2 shadow-5 tc" id="main_job">
           <h3 id="mainClassTitle"></h3>
           <p class="" id="mainClassLevel"></p>
-          <img src="images/peasant.png" />
+          <img id="classPicture" src="images/peasant.png" />
+          <p id="description1">You're a worthless peasant.</p>
+          <p id="description2">It's not much of a life, but it's a life.</p>
           <div class="bg-moon-gray br-pill h1 overflow-y-hidden">
-            <div class="progress-fill bg-blue br-pill h1 shadow-1" id="mainClassProgress"></div>
+            <div class="progress-fill br-pill h1 shadow-1" id="mainClassProgress"></div>
           </div>
-          <p class="" id="mainClassETA">0:00</p>
-          <span class="d-inline-block" data-toggle="tooltip" id="soldierTooltip"><button class=" btn btn-dark" id="promoteToSoldier" disabled>Become a Soldier</button></span>
-
-      </div>   
-
-    <footer>
-    </footer>
+          <p class="">eta: <span id="mainClassETA">0:00</span> - exp <span id="current-exp">0</span> / <span id="needed-exp">0</span> needed</p>
+          <div class="dib promotions">
+            <span class="d-inline-block" data-toggle="tooltip" id="soldierTooltip"><button class="btn promotion-button" id="promoteToFirst" disabled>Become a Soldier</button></span>
+            <span class="d-inline-block" data-toggle="tooltip" id="farmerTooltip"><button class="btn promotion-button" id="promoteToSecond" disabled>Become a Farmer</button></span>
+          </div>
+      </div>
+    </div>
+    </div> 
+    <!-- End Class Cards -->
 
     
-    <script src="scripts.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <!-- <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
+    <script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $(document).ready(function(){
           $("#soldierTooltip").tooltip({
-            title: "<h3>Become a lowly soldier.</h3><p>+1 gold</p>",
+            title: "<h3>Become a soldier.</h3><p>+1 gold</p><p>+1 attack</p><p>+1 defense</p>",
             template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
             animation: true,
-            html: true
-          });   
+            html: true,
+            trigger: 'hover'
+          });
+          $("#farmerTooltip").tooltip({
+            title: "<h3>Become a farmer.</h3><p>+4 gold</p><p>+1 defense</p>",
+            template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner tooltip-content"></div></div>',
+            animation: true,
+            html: true,
+            trigger: 'hover'
+          });  
       });
       </script>
   </body>
