@@ -11,6 +11,17 @@ body {
 
 .modal-header {
     background: var(--main-head-color);
+    color: white;
+}
+
+.modal-content {
+    border-top-left-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
+}
+
+.close {
+    color: white;
+    text-shadow: none;
 }
 
 .header {
@@ -18,6 +29,7 @@ body {
     background: var(--main-head-color);
 }
 
+/* Inventory styles */
 .inventory {
     border-bottom: 1px solid black;
     background: #055A5A;
@@ -37,33 +49,32 @@ body {
 }
 
 
-
+/* All Cell Specific styles */
 .wrapper {
     display: grid;
 }
 
-.cell_main {
+.cell-main {
     padding: 1rem;
     display: grid;
     justify-content: center;
     color: white;
 }
 
-.cell_main img {
-    width: 100px;
-    height: 100px;
-}
-
-.cell_main > h1 {
+.cell-main > h1 {
     color: white;
 }
 
-/* All Cell Specific styles */
 .cell {
     align-items: center;
     justify-items: center;
     background: #5BBBBB;
     min-width: 6em;
+}
+
+.main-class-picture {
+    width: 100px !important;
+    height: 100px !important;
 }
 
 .cell p {
@@ -75,6 +86,10 @@ body {
     padding: 0;
 }
 
+p.main-currency-gain {
+    margin: 20px;
+}
+
 .progress-fill {
     background: #008080;
     width: 1%;
@@ -84,17 +99,18 @@ body {
     margin: 0;
 }
 
-.tooltip-inner {
-    background: var(--main-head-color);
-}
-
-.promoGridContainer {
+.promo-grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
 
-.promoGridA {
+.promo-grid-a {
     grid-row: span 2 / auto;
+}
+
+.cell img {
+    height: 20px;
+    width: 20px;
 }
 
 .btn {
