@@ -29,6 +29,7 @@ body {
     background: var(--main-head-color);
 }
 
+
 /* Inventory styles */
 .inventory {
     border-bottom: 1px solid black;
@@ -48,10 +49,14 @@ body {
     vertical-align: middle;
 }
 
-
-/* All Cell Specific styles */
 .wrapper {
     display: grid;
+}
+
+/* All Cell Specific styles */
+.class-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .cell-main {
