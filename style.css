@@ -60,7 +60,7 @@ body {
 }
 
 .cell-main {
-    padding: 1rem;
+    padding: 0.2rem;
     display: grid;
     justify-content: center;
     color: white;
@@ -92,7 +92,7 @@ body {
 }
 
 p.main-currency-gain {
-    margin: 20px;
+    padding-top: 20px;
 }
 
 .progress-fill {
@@ -102,6 +102,12 @@ p.main-currency-gain {
 
 .tooltip p {
     margin: 0;
+}
+
+.promotion-main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .promo-grid-container {
