@@ -169,6 +169,10 @@ function mainGameLoop() {
 document.getElementById('promo-first').onclick = function() { promotion(playerClass.firstPromotion); }
 document.getElementById('promo-second').onclick = function() { promotion(playerClass.secondPromotion); }
 
+// Event handlers for the screen swaps
+document.getElementById('crafting-shop').onclick = function() { changeScreen("crafting-shop"); }
+document.getElementById('main-game-screen').onclick = function() { changeScreen("main-game"); }
+
 // Handles reassigning the players class to the selected promotion class
 function promotion(promotionClass) {
     if (promotionClass === 'Soldier') {
@@ -210,11 +214,15 @@ function promotion(promotionClass) {
     initialize();
 }
 
-function buildPromoCurrencyGains() {
-    let firstPromoClass = document.getElementById("promo-first").innerHTML;
-    let secondPromoClass = document.getElementById("promo-first").innerHTML;
-    
-}
+const changeScreen = (screenToBeLoaded) => {
+    if (screenToBeLoaded === "crafting-shop") {
+        document.getElementById("main-class-container").style = "display: none";
+        document.getElementById("main-shop-container").style = "display: initial";
+    } else if (screenToBeLoaded === "main-game"){
+        document.getElementById("main-class-container").style = "display: initial";
+        document.getElementById("main-shop-container").style = "display: none";
+    }
+} 
 
 // Dev Tools
 document.getElementById('dev-level-up').onclick = function() { devTools('levelUp'); }

@@ -14,37 +14,17 @@
     
 </head>
 <body>
-  <!-- Shop/Upgrade/Crafting Modal -->
-  <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header ">
-          <h5 class="modal-title" id="example-modal-label">Crafting Shop</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="modal-container">
-          ...
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="wrapper">
-
+    <div class="wrapper">
     <!-- Begin Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark header">
-      <a class="navbar-brand" href="#">Adventure Idle</a>
+      <a class="navbar-brand" href="#" id="main-game-screen">Adventure Idle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#" id="craft" data-toggle="modal" data-target="#shopModal">Ye Old Shoppe</a>
+            <a class="nav-link" href="#" id="crafting-shop">Ye Olde Shoppe</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Tavern</a>
@@ -72,59 +52,67 @@
     <!-- End Inventory Panel -->
 
     <!-- Begin Class Cards -->
-    <div class="class-wrapper">
-      <div class="cell-main">
-        <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
-          <h3 id="minion-class-title">Temp</h3>
+    <div id="main-class-container">
+      <div class="class-wrapper">
+        <div class="cell-main">
+          <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
+            <h3 id="minion-class-title">Temp</h3>
+          </div>
+        </div>
+        <div class="cell-main">
+          <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
+              <h3 id="main-class-title"></h3>
+              <p id="main-class-level"></p>
+              <img class="main-class-picture" id="main-class-picture" src="" />
+              <p id="main-class-description1"></p>
+              <p id="main-class-description2"></p>
+              <p class="main-currency-gain">
+                <span id="main-gold-gain"></span><img src="images/gold.png" />
+                <span id="main-attack-gain"></span><img src="images/attack.png" />
+                <span id="main-defense-gain"></span><img src="images/defense.png" />
+              </p>
+              <div class="progess-container bg-moon-gray br-pill h1 overflow-y-hidden">
+                <div class="progress-fill br-pill h1 shadow-1" id="main-class-progress"></div>
+              </div>
+              <p>exp <span id="main-current-exp">0</span> / <span id="main-needed-exp">0</span> needed</p>
+          </div>
+        </div>
+        <div class="cell-main">
+          <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
+            <h3 id="minion-class-title">Temp</h3>
+          </div>
         </div>
       </div>
-      <div class="cell-main">
-        <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
-            <h3 id="main-class-title"></h3>
-            <p id="main-class-level"></p>
-            <img class="main-class-picture" id="main-class-picture" src="" />
-            <p id="main-class-description1"></p>
-            <p id="main-class-description2"></p>
-            <p class="main-currency-gain">
-              <span id="main-gold-gain"></span><img src="images/gold.png" />
-              <span id="main-attack-gain"></span><img src="images/attack.png" />
-              <span id="main-defense-gain"></span><img src="images/defense.png" />
-            </p>
-            <div class="progess-container bg-moon-gray br-pill h1 overflow-y-hidden">
-              <div class="progress-fill br-pill h1 shadow-1" id="main-class-progress"></div>
-            </div>
-            <p>exp <span id="main-current-exp">0</span> / <span id="main-needed-exp">0</span> needed</p>
+      <div class="promotion-main-container">
+        <div class="cell f2 br3 ma2 pa1 bw2 shadow-5 tc promo-grid-container">
+          <div class="promo-grid-a">
+            <button class="btn promo-button" id="promo-first" disabled></button>
+          </div>
+          <div class="f5"><span id="promo-first-short-desc"></span>
+          </div>
+          <div class="f5"><span id="promo-second-currency-text"></span>
+          </div>
         </div>
-      </div>
-      <div class="cell-main">
-        <div class="cell f1 br3 pa1 ma2 bw2 shadow-5 tc" id="main-job">
-          <h3 id="minion-class-title">Temp</h3>
+        <div class="cell promo-grid-container f2 br3 ma2 pa1 bw2 shadow-5 tc">
+          <div class="promo-grid-a">
+            <button class="btn promo-button" id="promo-second" disabled></button>
+          </div>
+          <div class="f5"><span id="promo-second-short-desc"></span>
+          </div>
+          <div class="f5"><span id="promo-second-currency-text"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="promotion-main-container">
-      <div class="cell f2 br3 ma2 pa1 bw2 shadow-5 tc promo-grid-container">
-        <div class="promo-grid-a">
-          <button class="btn promo-button" id="promo-first" disabled></button>
-        </div>
-        <div class="f5"><span id="promo-first-short-desc"></span>
-        </div>
-        <div class="f5"><span id="promo-second-currency-text"></span>
-        </div>
-      </div>
-      <div class="cell promo-grid-container f2 br3 ma2 pa1 bw2 shadow-5 tc">
-        <div class="promo-grid-a">
-          <button class="btn promo-button" id="promo-second" disabled></button>
-        </div>
-        <div class="f5"><span id="promo-second-short-desc"></span>
-        </div>
-        <div class="f5"><span id="promo-second-currency-text"></span>
-        </div>
-      </div>
-  </div>
-    
     <!-- End Class Cards -->
 
+    <!-- Begin Shop/Crafting Cards -->
+    <div class="main-shop-container" id="main-shop-container">
+      <h1>Testing</h1>
+    </div>
+    <!-- End Shop/Crafting Cards -->
+
+    </div>
     <script src="scripts/popper.min.js"/></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/jquery-3.3.1.min.js"></script>

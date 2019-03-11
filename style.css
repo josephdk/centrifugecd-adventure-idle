@@ -9,21 +9,6 @@ body {
     background: #008080;
   }
 
-.modal-header {
-    background: var(--main-head-color);
-    color: white;
-}
-
-.modal-content {
-    border-top-left-radius: 0.4rem;
-    border-top-right-radius: 0.4rem;
-}
-
-.close {
-    color: white;
-    text-shadow: none;
-}
-
 .header {
     border-bottom: 1px solid black;
     background: var(--main-head-color);
@@ -127,4 +112,8 @@ p.main-currency-gain {
 .btn {
     font-weight: bold;
     background-color: #008080;
+}
+
+.main-shop-container {
+    display: none;
 }
