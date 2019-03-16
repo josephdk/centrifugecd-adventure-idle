@@ -1,0 +1,39 @@
+:root {
+    --main-head-color: #004f4f;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #fff;
+  }
+
+.header {
+    border-bottom: 1px solid black;
+    background: var(--main-head-color);
+}
+
+
+/* Inventory styles */
+.inventory {
+    border-bottom: 1px solid black;
+    background: #055A5A;
+    color: white;
+}
+
+.inventory span {
+    font-size: 1.5em;
+    padding-right: 1em;
+    vertical-align: middle;
+}
+
+.inventory img {
+    padding: 2px;
+    padding-right: 5px;
+    vertical-align: middle;
+}
+
+.wrapper {
+    display: grid;
+}
