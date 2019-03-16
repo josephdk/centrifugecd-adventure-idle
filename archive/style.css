@@ -117,3 +117,7 @@ p.main-currency-gain {
 .main-shop-container {
     display: none;
 }
+
+.nodisplay {
+    display: none;
+}
